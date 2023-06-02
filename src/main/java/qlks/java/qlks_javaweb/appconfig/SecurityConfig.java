@@ -36,7 +36,7 @@ public class SecurityConfig {
                 .authorizeRequests(authorize -> authorize
 
                         .requestMatchers("/home/**", "/login/**", "/logout/**").permitAll()
-                        .requestMatchers("/products/**").hasAnyAuthority("ROLE_SALES", "ROLE_USER")
+    //cho co trang chu roi phan quyen cho user  .requestMatchers("/products/**").hasAnyAuthority("ROLE_SALES", "ROLE_USER")
                         .requestMatchers("/admin/**").hasAnyAuthority("ROLE_ADMIN")
                         .requestMatchers("/register/**").permitAll()
                         .anyRequest().authenticated()
