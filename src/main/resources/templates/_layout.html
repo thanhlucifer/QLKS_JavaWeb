@@ -13,7 +13,9 @@
 <body>
 <nav class="navbar bg-dark" data-bs-theme="dark">
   <div style="padding-left: 20px">
-    <a class="navbar-brand" th:href="@{/home}">Home</a>
+        <span sec:authorize="hasAnyAuthority('ROLE_USER')">
+               <a class="navbar-brand" th:href="@{/home}">Home</a>
+            </span>
     <span sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
                 <a class="navbar-brand"  th:href="@{/admin}">Admin</a>
             </span>
