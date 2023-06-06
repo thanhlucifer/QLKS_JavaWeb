@@ -13,4 +13,17 @@ public class AdminController {
     {
         return "admin/index";
     }
+
+    @GetMapping("/employee")
+    public String showEmployee(){
+        return "admin/employee";// test employee
+    }
+    @GetMapping("/userprofile")
+    public String showuser(){
+        return "admin/userprofile";// test user
+    }
+    @GetMapping("/ad")
+    public String showad(){
+        return "admin/adminprofile";// test admin
+    }
 }

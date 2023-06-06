@@ -27,22 +27,22 @@
     <ul class="list-unstyled components">
       <li class="active"><a href="#homeSubmenu"
                             data-toggle="collapse" aria-expanded="false"
-                            class="dropdown-toggle"> <i class="fas fa-home"></i> Home
+                            class="dropdown-toggle"> <i class="fas fa-home"></i> Profile
       </a>
         <ul class="collapse list-unstyled" id="homeSubmenu">
-          <li><a href="#">My cart</a></li>
-          <li><a href="#">My wishlist</a></li>
+          <li><a th:href="@{/admin/userprofile}">Người dùng</a></li>
+          <li><a th:href="@{/admin/ad}">Admin </a></li>
         </ul></li>
-      <li><a href="#"> <i class="fas fa-briefcase"></i> Quan ly phong
+      <li><a href="#"> <i class="fas fa-briefcase"></i> Quản lý phòng
       </a> <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false"
-              class="dropdown-toggle"> <i class="fas fa-copy"></i> Quan ly dich vu
+              class="dropdown-toggle"> <i class="fas fa-copy"></i> Quản lý dịch vụ
       </a>
         <ul class="collapse list-unstyled" id="pageSubmenu">
           <li><a href="#">1</a></li>
           <li><a href="#">2</a></li>
           <li><a href="#">3</a></li>
         </ul></li>
-      <li><a href="#"> <i class="fas fa-image"></i> Quan ly nhan vien
+      <li><a th:href="@{/admin/employee}"> <i class="fas fa-image"></i> Quan ly nhan vien
       </a></li>
       <li><a href="#"> <i class="fas fa-paper-plane"></i> Quan ly cai gi nua ta
       </a></li>
