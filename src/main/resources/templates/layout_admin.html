@@ -25,14 +25,10 @@
     </div>
 
     <ul class="list-unstyled components">
-      <li class="active"><a href="#homeSubmenu"
-                            data-toggle="collapse" aria-expanded="false"
-                            class="dropdown-toggle"> <i class="fas fa-home"></i> Profile
-      </a>
-        <ul class="collapse list-unstyled" id="homeSubmenu">
-          <li><a th:href="@{/admin/userprofile}">Người dùng</a></li>
-          <li><a th:href="@{/admin/ad}">Admin </a></li>
-        </ul></li>
+      <li class="active"><a th:href="@{/admin/users}">
+        <i class="fas fa-user-circle"></i>
+        Account Profile
+        </a></li>
       <li><a href="#"> <i class="fas fa-briefcase"></i> Quản lý phòng
       </a> <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false"
               class="dropdown-toggle"> <i class="fas fa-copy"></i> Quản lý dịch vụ
