@@ -5,20 +5,23 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import qlks.java.qlks_javaweb.model.User;
+import qlks.java.qlks_javaweb.service.RoleService;
 import qlks.java.qlks_javaweb.service.UserService;
 
 import java.util.List;
 import java.util.Optional;
 
-@RequestMapping("admin")
+@RequestMapping("/admin")
 @Controller
 public class AdminController {
 
     private final UserService userService;
+    private final RoleService roleService;
 
     @Autowired
-    public AdminController(UserService userService) {
+    public AdminController(UserService userService, RoleService roleService) {
         this.userService = userService;
+        this.roleService = roleService;
     }
     @GetMapping("")
     public String index()// test trang admin
@@ -53,6 +56,7 @@ public class AdminController {
         Optional<User> user = userService.getUserById(userId);
         if (user.isPresent()) {
             model.addAttribute("user", user.get());
+            model.addAttribute("allRoles",roleService.getAllRoles() ); // Assuming allRoles is a list of available roles
             return "admin/users/edit-user";
         } else {
             return "redirect:/admin/users/userprofile";
@@ -61,9 +65,11 @@ public class AdminController {
 
     @PostMapping("/users/{userId}/edit")
     public String updateUser(@PathVariable Integer userId, @ModelAttribute("user") User updatedUser) {
-        User user = userService.updateUser(userId, updatedUser);
-        return "redirect:/admin/users/userprofile" + user.getUser_id();
+        userService.updateUser(userId, updatedUser);
+        return "redirect:/admin/users/userprofile";
     }
+
+
 
     @PostMapping("/users/{userId}/delete")
     public String deleteUser(@PathVariable Integer userId) {

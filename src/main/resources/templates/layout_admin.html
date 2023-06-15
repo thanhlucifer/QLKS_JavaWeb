@@ -20,7 +20,7 @@
   <!-- Sidebar  -->
   <nav  th:fragment="sidebar" id="sidebar">
     <div class="sidebar-header">
-      <h3>&nbsp;&nbsp;&nbsp;QLKS-admin</h3>
+     <a th:href="@{/admin}"> <h3>&nbsp;&nbsp;&nbsp;QLKS-admin</h3></a>
       <strong><i class="fa fa-shopping-cart" aria-hidden="true"></i></strong>
     </div>
 
@@ -39,6 +39,8 @@
           <li><a href="#">3</a></li>
         </ul></li>
       <li><a th:href="@{/admin/employee}"> <i class="fas fa-image"></i> Quan ly nhan vien
+      </a></li>
+      <li><a th:href="@{/admin/food_items}"> <i class="fas fa-hamburger"></i> Quản lý đồ ăn
       </a></li>
       <li><a href="#"> <i class="fas fa-paper-plane"></i> Quan ly cai gi nua ta
       </a></li>

@@ -10,32 +10,33 @@
 <div layout:fragment="content_admin" class="container body-content">
   <h2>Edit User</h2>
   <form method="POST" th:action="@{/admin/users/{userId}/edit(userId=${user.user_id})}">
-    <div>
+    <div class="form-group">
       <label for="username">Username:</label>
-      <input type="text" id="username" name="username" th:value="${user.username}" required>
+      <input type="text" id="username" name="username" class="form-control" th:value="${user.username}" required>
     </div>
-    <div>
+    <div class="form-group">
       <label for="email">Email:</label>
-      <input type="email" id="email" name="email" th:value="${user.email}" required>
+      <input type="email" id="email" name="email" class="form-control" th:value="${user.email}" required>
     </div>
-    <div>
+    <div class="form-group">
       <label for="password">Password:</label>
-      <input type="password" id="password" name="password" th:value="${user.password}" required>
+      <input type="password" id="password" name="password" class="form-control" th:value="${user.password}" required>
     </div>
-    <div>
+    <div class="form-group">
       <label for="roles">Roles:</label>
-      <select id="roles" name="roles" multiple="multiple" required>
+      <select id="roles" name="roles" class="form-control" multiple="multiple" required>
         <option th:each="role : ${allRoles}"
-                th:value="${role.roleId}"
+                th:value="${role.role_id}"
                 th:text="${role.name}"
                 th:selected="${user.roles.contains(role)}"></option>
       </select>
     </div>
-    <div>
-      <button type="submit">Save</button>
-      <a th:href="@{/admin/users}">Cancel</a>
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">Save</button>
+      <a th:href="@{/admin/users}" class="btn btn-secondary">Cancel</a>
     </div>
   </form>
 </div>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 </body>
 </html>

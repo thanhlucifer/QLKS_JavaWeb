@@ -29,6 +29,9 @@ public class UserService {
         return userRepository.findByUsername(username);
     }
 
+    public User saveUser(User user) {
+        return userRepository.save(user);
+    }
     public User createUser(User user) {
         return userRepository.save(user);
     }
@@ -38,15 +41,20 @@ public class UserService {
     }
 
     public User updateUser(Integer userId, User updatedUser) {
+        // Kiểm tra xem user có tồn tại trong cơ sở dữ liệu không
         Optional<User> optionalUser = userRepository.findById(userId);
         if (optionalUser.isPresent()) {
             User user = optionalUser.get();
+            // Cập nhật thông tin người dùng với dữ liệu đã chỉnh sửa
             user.setUsername(updatedUser.getUsername());
             user.setEmail(updatedUser.getEmail());
             user.setPassword(updatedUser.getPassword());
+            user.setRoles(updatedUser.getRoles());
+            // Lưu lại người dùng đã cập nhật vào cơ sở dữ liệu
             return userRepository.save(user);
         } else {
             throw new IllegalArgumentException("User not found with ID: " + userId);
         }
     }
+
 }
