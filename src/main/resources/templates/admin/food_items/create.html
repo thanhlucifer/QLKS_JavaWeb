@@ -1,34 +1,34 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="_layout">
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout_admin">
 <head>
     <meta charset="UTF-8">
-    <title>Create Food Item</title>
+    <title>Title</title>
 </head>
 <body>
-<div layout:fragment="content" class="container body-content">
-    <h2>Create Food Item</h2>
-    <form th:action="@{~/admin/food_items/create}" th:object="${food}" method="post" class="form" enctype = "multipart/form-data">
-        <div class="form-group">
-            <label for="image">Image:</label>
-            <!--                <input class="form-control" type="text" th:field="*{image}" id="image" placeholder="image">-->
-            <input class="form-control" type="file" id="image" name="imageProduct" accept="image/png, image/jpeg">
-            <!--                <div class="alert alert-warning" th:if="${#fields.hasErrors('image')}" th:errors="*{image}"></div>-->
-        </div>
-        <div class="form-group">
-            <label for="name">Name</label>
-            <input class="form-control" type="text" th:field="*{foodName}" id="name"  placeholder="Food Name">
-            <div class="alert alert-warning" th:if="${#fields.hasErrors('name')}" th:errors="*{foodName}"></div>
-        </div>
-        <div class="form-group">
-            <label for="price">Price:</label>
-            <input class="form-control" type="number" th:field="*{foodPrice}" id="price" placeholder="price">
-            <div class="alert alert-warning" th:if="${#fields.hasErrors('price')}" th:errors="*{foodPrice}"></div>
-        </div>
-        <input type="submit"  class="btn btn-success" value="Add Food">
-    </form>
+<div layout:fragment="content_admin" class="container body-content">
+  <h1>Create Food Item</h1>
+
+  <form th:action="@{~/admin/food_items/create}" method="post" enctype="multipart/form-data" th:object="${food}">
+    <div>
+      <label for="foodName">Food Name:</label>
+      <input type="text" id="foodName" name="foodName" required th:field="*{foodName}" />
+      <span th:if="${#fields.hasErrors('foodName')}" th:errors="*{foodName}"></span>
+    </div>
+
+    <div>
+      <label for="foodPrice">Food Price:</label>
+      <input type="text" id="foodPrice" name="foodPrice" required th:field="*{foodPrice}" />
+      <span th:if="${#fields.hasErrors('foodPrice')}" th:errors="*{foodPrice}"></span>
+    </div>
+
+    <div>
+      <label for="imageProduct">Food Image:</label>
+      <input type="file" id="imageProduct" name="imageProduct" required />
+    </div>
+
+    <button type="submit">Create</button>
+  </form>
 </div>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.0/dist/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

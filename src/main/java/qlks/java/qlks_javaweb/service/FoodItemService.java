@@ -42,7 +42,6 @@ public class FoodItemService {
             find.setFoodImage(editfooditem.getFoodImage());
             find.setFoodName(editfooditem.getFoodName());
             find.setFoodPrice(editfooditem.getFoodPrice());
-
         }
     }
     public void remove(long foodId) {

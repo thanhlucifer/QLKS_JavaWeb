@@ -30,8 +30,8 @@
             <td th:text="${food.foodName}"></td>
             <td th:text="${food.foodPrice}"></td>
             <td>
-                <a th:href="@{/admin/products/edit/{id}(id=${food.foodId})}" custom:linkMethod="post"  class="btn btn-secondary">Edit</a>
-                <a th:href="@{/admin/products/delete/{id}(id=${food.foodId})}" custom:linkMethod="post" class="btn btn-danger">Delete</a>
+                <a th:href="@{/admin/food_items/edit/{id}(id=${food.foodId})}" custom:linkMethod="post"  class="btn btn-secondary">Edit</a>
+                <a th:href="@{/admin/food_items/delete/{id}(id=${food.foodId})}" custom:linkMethod="post" class="btn btn-danger">Delete</a>
             </td>
         </tr>
         </tbody>

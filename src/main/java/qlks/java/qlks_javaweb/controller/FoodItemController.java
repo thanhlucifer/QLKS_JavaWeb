@@ -62,6 +62,42 @@ public class FoodItemController {
             }
         }
         foodItemService.add(newfooditem);
-        return "redirect:admin/food_items/list";
+        return "redirect:/admin/food_items";
+    }
+
+    @GetMapping("/edit/{id}")
+    public String edit(@PathVariable long id, Model model)
+    {
+        model.addAttribute("food", foodItemService.get(id));
+        return "admin/food_items/edit";
+    }
+    @PostMapping("/edit")
+    public String edit(@Valid food_item editfooditem,
+                       @RequestParam MultipartFile imageProduct,
+                       BindingResult result,
+                       Model model)
+    {
+        if (result.hasErrors()) {
+            model.addAttribute("food", editfooditem);
+            return "admin/food_items/edit";
+        }
+        if(imageProduct != null && imageProduct.getSize() > 0)
+        {
+            try {
+                File saveFile = new ClassPathResource("static/images_food").getFile();
+                Path path = Paths.get(saveFile.getAbsolutePath() + File.separator + editfooditem.getFoodImage());
+                Files.copy(imageProduct.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        foodItemService.edit(editfooditem);
+        return "redirect:/admin/food_items";
+    }
+
+    @GetMapping("/delete/{id}")
+    public String deleteEmployee(@PathVariable(value = "id") long id) {
+        this.foodItemService.remove(id);
+        return "redirect:/admin/food_items";
     }
 }
