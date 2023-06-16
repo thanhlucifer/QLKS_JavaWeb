@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en"xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout_admin" xmlns:custom="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div layout:fragment="content_admin" class="container body-content">
+    <h2>Edit Employee</h2>
+    <form th:action="@{/admin/employees/edit}" method="post" th:object="${employee}">
+        <input type="hidden" th:field="*{maNV}" />
+
+        <div>
+            <label>Name:</label>
+            <input type="text" th:field="*{tenNV}" required>
+            <span th:if="${#fields.hasErrors('tenNV')}" th:errors="*{tenNV}"></span>
+        </div>
+
+        <div>
+            <label>CCCD:</label>
+            <input type="text" th:field="*{cccd}" required>
+            <span th:if="${#fields.hasErrors('cccd')}" th:errors="*{cccd}"></span>
+        </div>
+
+        <div>
+            <label>Date of Birth:</label>
+            <input type="text" th:field="*{ngaySinh}">
+            <span th:if="${#fields.hasErrors('ngaySinh')}" th:errors="*{ngaySinh}"></span>
+        </div>
+
+        <div>
+            <label>Gender:</label>
+            <input type="text" th:field="*{gioiTinh}">
+            <span th:if="${#fields.hasErrors('gioiTinh')}" th:errors="*{gioiTinh}"></span>
+        </div>
+
+        <div>
+            <label>Address:</label>
+            <input type="text" th:field="*{address}">
+            <span th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></span>
+        </div>
+
+        <div>
+            <label>Email:</label>
+            <input type="email" th:field="*{email}">
+            <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+        </div>
+
+        <div>
+            <label>Phone Number:</label>
+            <input type="text" th:field="*{phoneNumber}">
+            <span th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></span>
+        </div>
+
+        <div>
+            <label>Salary:</label>
+            <input type="text" th:field="*{luong}">
+            <span th:if="${#fields.hasErrors('luong')}" th:errors="*{luong}"></span>
+        </div>
+
+        <div>
+            <label>Section:</label>
+            <select th:field="*{section}" required>
+                <option th:each="section : ${listsection}" th:value="${section.sectionId}"
+                        th:text="${section.sectionName}"></option>
+            </select>
+            <span th:if="${#fields.hasErrors('section')}" th:errors="*{section}"></span>
+        </div>
+
+        <div>
+            <button type="submit">Update</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>

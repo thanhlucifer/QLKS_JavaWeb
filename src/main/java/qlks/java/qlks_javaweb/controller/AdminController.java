@@ -59,7 +59,7 @@ public class AdminController {
             model.addAttribute("allRoles",roleService.getAllRoles() ); // Assuming allRoles is a list of available roles
             return "admin/users/edit-user";
         } else {
-            return "redirect:/admin/users/userprofile";
+            return "redirect:/admin/users";
         }
     }
 
@@ -71,10 +71,10 @@ public class AdminController {
 
 
 
-    @PostMapping("/users/{userId}/delete")
-    public String deleteUser(@PathVariable Integer userId) {
-        userService.deleteUser(userId);
-        return "redirect:/admin/users/userprofile";
+    @GetMapping("/delete/{id}")
+    public String deleteEmployee(@PathVariable(value = "id") Integer id) {
+        this.userService.deleteUser(id);
+        return "redirect:/admin/users";
     }
     @GetMapping("/ad")
     public String showad(){

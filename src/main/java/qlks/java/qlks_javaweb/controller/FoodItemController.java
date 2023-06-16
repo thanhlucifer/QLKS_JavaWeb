@@ -96,7 +96,7 @@ public class FoodItemController {
     }
 
     @GetMapping("/delete/{id}")
-    public String deleteEmployee(@PathVariable(value = "id") long id) {
+    public String deletefooditem(@PathVariable(value = "id") long id) {
         this.foodItemService.remove(id);
         return "redirect:/admin/food_items";
     }

@@ -25,10 +25,6 @@
     </div>
 
     <ul class="list-unstyled components">
-      <li class="active"><a th:href="@{/admin/users}">
-        <i class="fas fa-user-circle"></i>
-        Account Profile
-        </a></li>
       <li><a href="#"> <i class="fas fa-briefcase"></i> Quản lý phòng
       </a> <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false"
               class="dropdown-toggle"> <i class="fas fa-copy"></i> Quản lý dịch vụ
@@ -38,11 +34,12 @@
           <li><a href="#">2</a></li>
           <li><a href="#">3</a></li>
         </ul></li>
-      <li><a th:href="@{/admin/employee}"> <i class="fas fa-image"></i> Quan ly nhan vien
-      </a></li>
+
       <li><a th:href="@{/admin/food_items}"> <i class="fas fa-hamburger"></i> Quản lý đồ ăn
       </a></li>
-      <li><a href="#"> <i class="fas fa-paper-plane"></i> Quan ly cai gi nua ta
+      <li><a th:href="@{/admin/employees}"> <i class="fas fa-users"></i> Quản lý nhân viên
+      </a></li>
+      <li><a th:href="@{/admin/users}"><i class="fas fa-user-circle"></i>Account Profile
       </a></li>
       <li><a class="nav-link btn btn-light" th:href="@{/logout}"><i class="fas fa-sign-out-alt"></i></a></li>
     </ul>
