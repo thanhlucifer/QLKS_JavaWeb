@@ -25,7 +25,7 @@ public class HomeController {
     public String datPhong(Model model,String keyword ) {
         List<room> listCourse = roomService.getbyName();
         model.addAttribute("room", roomService.getbyName());
-        return "user/dat_phong";
+        return "user/room";
     }
 
 

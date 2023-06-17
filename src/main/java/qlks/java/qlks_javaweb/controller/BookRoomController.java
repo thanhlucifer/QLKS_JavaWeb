@@ -41,13 +41,9 @@ public class BookRoomController {
             return "user/bookroom";
         }*/
         bookRoomService.add(newRental);
-        //return "redirect:/confirm";
         return "user/confirm_bookroom";
     }
 
-    @GetMapping("/confirm")
-    public String confirm (){
-        return "";
-    }
+
 
 }

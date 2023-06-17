@@ -11,15 +11,29 @@
 <body>
 <div layout:fragment="content" class="container body-content">
   <form th:action="@{/user/bookroom}" th:object="${rental}" class="form" method="post">
+      <h2>Phiếu đặt phòng</h2>
 
 <!--    <div class="form-group">-->
 <!--      <label for="rentalId">rentalId</label>-->
 <!--      <input type="text" th:field="*{rentalId}" class="form-control" id="rentalId" placeholder="rentalId">-->
 <!--    </div>-->
-    <div class="form-group">
-      <label for="roomNumber">room Number</label>
-      <input type="text" th:field="*{roomNumber}" class="form-control" id="roomNumber" placeholder="roomNumber">
-    </div>
+<!--    <div class="form-group">-->
+<!--      <label for="roomNumber">Số phòng</label>-->
+<!--      <input type="text" th:field="*{roomNumber}" class="form-control" id="roomNumber" placeholder="roomNumber">-->
+<!--    </div>-->
+      <br><br>
+      <div class="form-group">
+          <label for="roomNumber">Chọn phòng</label>
+          <select name="roomNumber" id="roomNumber">
+              <option value="101">101</option>
+              <option value="102">102</option>
+              <option value="103">103</option>
+              <option value="104">104</option>
+              <option value="105">105</option>
+              <option value="106">106</option>
+              <option value="104">107.</option>
+          </select>
+      </div>
     <div class="form-group">
       <label for="checkInDate">Check-in date</label>
       <input type="date" th:field="*{checkInDate}" class="form-control" id="checkInDate"
@@ -36,11 +50,11 @@
     </div>
     <div class="form-group">
       <label for="cccd">CCCD:</label>
-      <input type="text" th:field="*{cccd}" class="form-control" id="cccd" placeholder="guestName">
+      <input type="text" th:field="*{cccd}" class="form-control" id="cccd" placeholder="CCCD">
     </div>
     <div class="form-group">
       <label for="phoneNumber">Phone:</label>
-      <input type="text" th:field="*{phoneNumber}" class="form-control" id="phoneNumber" placeholder="guestName">
+      <input type="text" th:field="*{phoneNumber}" class="form-control" id="phoneNumber" placeholder="Phone">
     </div>
 
     <div class="form-group">
@@ -49,14 +63,11 @@
     </div>
 
     <div class="form-group">
-      <label for="note">note:</label>
-      <input type="text" th:field="*{note}" class="form-control" id="note" placeholder="note">
+      <label for="note">Ghi chú:</label>
+      <input type="text" th:field="*{note}" class="form-control" id="note" placeholder="">
     </div>
 
-
-
-
-
+      <br><br>
     <input type="submit"  class="btn btn-success" value="xác nhận">
 
   </form>
