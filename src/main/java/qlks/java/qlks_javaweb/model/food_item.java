@@ -15,10 +15,9 @@ import java.io.Serializable;
 
 public class food_item {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "food_item_id")
     private Long foodId;
-
     @Column(name = "food_item_name",unique = true)
     private String foodName;
 

@@ -17,7 +17,7 @@ import java.util.Set;
 @Setter
 public class Rental {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "rental_id")
     private Long rentalId;
 

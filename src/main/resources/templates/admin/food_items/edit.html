@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout_admin">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit food</title>
+</head>
+<body>
+<div layout:fragment="content_admin" class="container body-content">
+    <h1>Edit Food Item</h1>
+    <form th:action="@{/admin/food_items/edit}" method="post" enctype="multipart/form-data" th:object="${food}">
+        <input type="hidden" th:field="*{foodId}" />
+        <div class="form-group">
+            <label for="foodName">Food Name:</label>
+            <input type="text" th:field="*{foodName}" id="foodName" class="form-control" />
+            <span th:if="${#fields.hasErrors('foodName')}" th:errors="*{foodName}" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label for="foodPrice">Food Price:</label>
+            <input type="text" th:field="*{foodPrice}" id="foodPrice" class="form-control" />
+            <span th:if="${#fields.hasErrors('foodPrice')}" th:errors="*{foodPrice}" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label for="imageProduct">Food Image:</label>
+            <img class="form-control" th:src="@{/images_food/} + *{foodImage}" alt="Current Image" style="width: 500px; height: 500px;" />
+            <input type="file" name="imageProduct" id="imageProduct" class="form-control-file" />
+        </div>
+        <div>
+            <input type="submit" value="Save" class="btn btn-primary" />
+        </div>
+    </form>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

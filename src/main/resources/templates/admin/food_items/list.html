@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout_admin"
+      xmlns:custom="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>List Food</title>
+    <!-- Bootstrap CSS -->
+</head>
+<body>
+<div layout:fragment="content_admin" class="container body-content">
+    <h2>List Food</h2>
+    <a th:href="@{~/admin/food_items/create}" class="btn btn-primary">Create New Food</a>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Image</th>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="food : ${listfood}" >
+            <th scope="row" th:text="${food.foodId}"></th>
+
+            <td>
+                <img height="120" width="150" th:src="@{/images_food/} + ${food.foodImage}"/>
+            </td>
+            <td th:text="${food.foodName}"></td>
+            <td th:text="${food.foodPrice}"></td>
+            <td>
+                <a th:href="@{/admin/food_items/edit/{id}(id=${food.foodId})}" custom:linkMethod="post"  class="btn btn-secondary">Edit</a>
+                <a th:href="@{/admin/food_items/delete/{id}(id=${food.foodId})}" custom:linkMethod="post" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+</body>
+</html>

@@ -19,7 +19,7 @@ import java.util.Set;
 @Setter
 public class Section {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "section_id")
     private Long sectionId;
 
