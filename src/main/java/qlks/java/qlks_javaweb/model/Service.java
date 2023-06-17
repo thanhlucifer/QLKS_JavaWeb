@@ -15,7 +15,7 @@ import java.io.Serializable;
 @Setter
 public class Service  {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "service_id")
     private Long id;
 

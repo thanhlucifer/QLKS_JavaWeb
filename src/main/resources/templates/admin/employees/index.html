@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout_admin" xmlns:custom="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Nhan vien</h1>
+<div layout:fragment="content_admin" class="container body-content">
+    <a th:href="@{~/admin/employees/create}" class="btn btn-primary">Create New Employee</a>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">CCCD</th>
+            <th scope="col">Date of Birth</th>
+            <th scope="col">Gender</th>
+            <th scope="col">Address</th>
+            <th scope="col">Email</th>
+            <th scope="col">Phone Number</th>
+            <th scope="col">Salary</th>
+            <th scope="col">Section</th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="employee : ${listEmployee}">
+            <th scope="row" th:text="${employee.maNV}"></th>
+            <td th:text="${employee.tenNV}"></td>
+            <td th:text="${employee.cccd}"></td>
+            <td th:text="${employee.ngaySinh}"></td>
+            <td th:text="${employee.gioiTinh}"></td>
+            <td th:text="${employee.address}"></td>
+            <td th:text="${employee.email}"></td>
+            <td th:text="${employee.phoneNumber}"></td>
+            <td th:text="${employee.luong}"></td>
+            <td th:text="${employee.section.sectionName}"></td>
+            <td>
+               <a th:href="@{/admin/employees/edit/{id}(id=${employee.maNV})}" custom:linkMethod="post"  class="btn btn-secondary">Edit</a>
+                <a th:href="@{/admin/employees/delete/{id}(id=${employee.maNV})}" custom:linkMethod="post" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    </div>
+</body>
+</html>

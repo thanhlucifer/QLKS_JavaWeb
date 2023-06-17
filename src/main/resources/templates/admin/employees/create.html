@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout_admin">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div layout:fragment="content_admin" class="container body-content">
+    <form th:action="@{~/admin/employees/create}" method="post" th:object="${employee}">
+            <div class="form-group">
+                <label>Name:</label>
+                <input class="form-control" type="text" th:field="*{tenNV}" required>
+            </div>
+            <div class="form-group">
+                <label>CCCD:</label>
+                <input class="form-control" type="text" th:field="*{cccd}" required>
+            </div>
+            <div class="form-group">
+                <label>Date of Birth:</label>
+                <input class="form-control" type="text" th:field="*{ngaySinh}">
+            </div>
+            <div class="form-group">
+                <label>Gender:</label>
+                <input class="form-control" type="text" th:field="*{gioiTinh}">
+            </div>
+            <div class="form-group">
+                <label>Address:</label>
+                <input class="form-control" type="text" th:field="*{address}">
+            </div>
+            <div class="form-group">
+                <label>Email:</label>
+                <input type="email" th:field="*{email}">
+            </div>
+            <div class="form-group">
+                <label>Phone Number:</label>
+                <input class="form-control" type="text" th:field="*{phoneNumber}">
+            </div>
+            <div class="form-group">
+                <label>Salary:</label>
+                <input class="form-control" type="number" th:field="*{luong}">
+            </div>
+            <div>
+                <label>Section:</label>
+                <select th:field="*{section}">
+                    <option th:each="section : ${listsection}" th:value="${section.sectionId}" th:text="${section.sectionName}"></option>
+                </select>
+            </div>
+            <div>
+                <button type="submit" class="btn btn-success">Create</button>
+            </div>
+        </form>
+</div>
+</body>
+</html>

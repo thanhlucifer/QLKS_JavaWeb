@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout_admin">
+<head>
+  <meta charset="UTF-8">
+  <title>User Details</title>
+</head>
+<body>
+<div layout:fragment="content_admin" class="container body-content">
+  <h2>User Details</h2>
+  <table class="table">
+    <tr>
+      <th>Username</th>
+      <td th:text="${user.username}"></td>
+    </tr>
+    <tr>
+      <th>Email</th>
+      <td th:text="${user.email}"></td>
+    </tr>
+    <tr>
+      <th>Password</th>
+      <td th:text="${user.password}"></td>
+    </tr>
+    <tr>
+      <th>Roles</th>
+      <td>
+        <ul class="list-group">
+          <li th:each="role : ${user.roles}" class="list-group-item" th:text="${role.name}"></li>
+        </ul>
+      </td>
+    </tr>
+  </table>
+  <a th:href="@{/admin/users}" class="btn btn-secondary">Back to User List</a>
+</div>
+<!-- Thêm đường dẫn tới các file JavaScript của Bootstrap -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</body>
+</html>
