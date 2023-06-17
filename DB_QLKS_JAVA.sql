@@ -6,14 +6,14 @@ insert into qlks.guest(guest_name,birth,CCCD,address,nationality,phone_number,vi
 ('Huỳnh Nam','2002-10-10','123456789102','TP.HCM','Việt Nam','0123456789','yes'),
 ('Trần Như Huỳnh','2002-10-10','123456789102','TP.HCM','Việt Nam','0123456789','no');
 
-insert into qlks.room(room_number,room_type,vip,price,note,is_empty) values 
-('101','single','true','1700000','','yes'),
-('102','couple','true','1500000','Phòng đôi thường','yes'),
-('103','family','true','1700000','','yes'),
-('104','couple','true','1700000','','yes'),
-('105','single','true','5000000','Phòng này là phòng vip','yes'),
-('106','couple','true','1700000','Phòng này là phòng vip','yes'),
-('107','couple','true','3500000','Phòng này là phòng vip','yes');
+insert into qlks.room(room_number,room_type,vip,price,note,is_empty,image) values 
+('101','single','true','1700000','phòng đôi thường','yes','phong_don.jpg'),
+('102','couple','true','1500000','Phòng đôi thường','yes','phong-doi.jpg'),
+('103','family','true','1700000','Phòng dành cho gia đình 4 người ','yes','phong-doi.jpg'),
+('104','couple','true','1700000','phòng đôi thường','yes','phong-doi.jpg'),
+('105','single','true','5000000','Phòng view biển','yes','phong_don.jpg'),
+('106','couple','true','1700000','Phòng view biển vip','yes','phong-doi.jpg'),
+('107','couple','true','3500000','Phòng tổng thống vip','yes','phong-doi.jpg');
 
 insert into qlks.food_item(food_item_id,food_item_name,image,price) 
 values('1','Gà rán','','500000'),

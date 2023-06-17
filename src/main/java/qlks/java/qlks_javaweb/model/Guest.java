@@ -46,8 +46,8 @@ public class Guest  {
 
     @Column(name = "vip")
     private String vip;
-
+/*
     @OneToMany(mappedBy ="guest",cascade = CascadeType.ALL)
     private Set<Rental> rentals;
-
+*/
 }

@@ -27,6 +27,9 @@ public class room {
     @Column(name = "room_type")
     private String roomType;
 
+    @Column(name= "image")
+    private String image;
+
     @Column(name = "vip")
     private String vip;
 
