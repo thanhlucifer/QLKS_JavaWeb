@@ -31,26 +31,38 @@
               <option value="104">104</option>
               <option value="105">105</option>
               <option value="106">106</option>
-              <option value="104">107.</option>
+              <option value="107">107.</option>
           </select>
       </div>
     <div class="form-group">
       <label for="checkInDate">Check-in date</label>
-      <input type="date" th:field="*{checkInDate}" class="form-control" id="checkInDate"
+      <input type="datetime-local" th:field="*{checkInDate}" class="form-control" id="checkInDate"
              placeholder="Date">
+        <div class="alert alert-warning text-danger mt-2" th:if="${#fields.hasErrors('checkInDate')}"
+             th:errors="*{checkInDate}">
+        </div>
     </div>
     <div class="form-group">
       <label for="checkOutDate">Check-out date</label>
-      <input type="date" th:field="*{checkOutDate}" class="form-control" id="checkOutDate"
+      <input type="datetime-local" th:field="*{checkOutDate}" class="form-control" id="checkOutDate"
              placeholder="Date">
+        <div class="alert alert-warning text-danger mt-2" th:if="${#fields.hasErrors('checkOutDate')}"
+             th:errors="*{checkOutDate}">
+        </div>
     </div>
     <div class="form-group">
       <label for="guestName">Họ tên</label>
       <input type="text" th:field="*{guestName}" class="form-control" id="guestName" placeholder="guestName">
+        <div class="alert alert-warning text-danger mt-2" th:if="${#fields.hasErrors('guestName')}"
+             th:errors="*{guestName}">
+        </div>
     </div>
     <div class="form-group">
       <label for="cccd">CCCD:</label>
       <input type="text" th:field="*{cccd}" class="form-control" id="cccd" placeholder="CCCD">
+        <div class="alert alert-warning text-danger mt-2" th:if="${#fields.hasErrors('cccd')}"
+             th:errors="*{cccd}">
+        </div>
     </div>
     <div class="form-group">
       <label for="phoneNumber">Phone:</label>

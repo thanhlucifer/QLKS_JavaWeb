@@ -36,10 +36,10 @@ public class BookRoomController {
 
     @PostMapping("")
     public String bookRoom(@Valid Rental newRental, BindingResult result, Model model) {
-       /* if (result.hasErrors()) {
+        if (result.hasErrors()) {
             model.addAttribute("rental", newRental );
             return "user/bookroom";
-        }*/
+        }
         bookRoomService.add(newRental);
         return "user/confirm_bookroom";
     }
