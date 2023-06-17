@@ -16,11 +16,11 @@ insert into qlks.room(room_number,room_type,vip,price,note,is_empty,image) value
 ('107','couple','true','3500000','Phòng tổng thống vip','yes','phong-doi.jpg');
 
 insert into qlks.food_item(food_item_id,food_item_name,image,price) 
-values('1','Gà rán','','500000'),
-('2','lẩu dê','','1500000'),
-('3','lẩu bò','','500000'),
-('4','gỏi gà măng cụt','','200000'),
-('5','Kem cuộn','','120000');
+values('1','Gà rán','ga_ran.jpg','500000'),
+('2','lẩu dê','lau_de.jpg','1500000'),
+('3','lẩu bò','lau_bo.jpg','500000'),
+('4','gỏi gà măng cụt','goi_ga.jpg','200000'),
+('5','Kem cuộn','kem_cuon.jpg','120000');
 
 insert into qlks.service(service_id,service_name,price,note) 
 values('1','Quầy bar','0','miễn phí'),
