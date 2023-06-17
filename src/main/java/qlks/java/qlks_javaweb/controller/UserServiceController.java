@@ -9,7 +9,7 @@ import qlks.java.qlks_javaweb.service.FoodItemService;
 import qlks.java.qlks_javaweb.service.ServiceService;
 
 @Controller
-@RequestMapping("user/service")
+@RequestMapping("home/service")
 public class UserServiceController {
     @Autowired
     private ServiceService serviceService;

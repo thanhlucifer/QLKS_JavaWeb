@@ -59,10 +59,10 @@
         </button>
         <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
           <div class="navbar-nav mr-auto py-0">
-            <a href="index.html" class="nav-item nav-link active">Home</a>
-            <a href="service.html" class="nav-item nav-link">Services</a>
+            <a th:href="@{/}" class="nav-item nav-link active">Home</a>
+            <a th:href="@{/service}" class="nav-item nav-link">Services</a>
             <a href="room.html" class="nav-item nav-link">Rooms</a>
-            <a href="booking.html" class="nav-item nav-link">Rooms</a>
+            <a href="booking.html" class="nav-item nav-link">Booking</a>
             <a href="contact.html" class="nav-item nav-link">Contact</a>
           </div>
         </div>
@@ -87,12 +87,13 @@
 
 
 </div>
+
 <!-- Page Content  End-->
 
 
 
 <!-- Footer Start -->
-<div class="container-fluid bg-dark text-light footer wow fadeIn" data-wow-delay="0.1s">
+<div class="container-fluid bg-dark text-light footer wow fadeIn fixed-bottom" data-wow-delay="0.1s">
   <div class="container pb-5">
     <div class="row g-5">
       <div class="col-md-6 col-lg-3">

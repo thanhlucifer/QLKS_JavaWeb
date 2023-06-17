@@ -6,10 +6,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import qlks.java.qlks_javaweb.model.room;
 import qlks.java.qlks_javaweb.service.RoomService;
+import qlks.java.qlks_javaweb.service.ServiceService;
 
 import java.util.List;
 
@@ -18,11 +18,12 @@ import java.util.List;
 public class HomeController {
     @Autowired
     private RoomService roomService;
-
+    @Autowired
+    private ServiceService serviceService;
 
     @GetMapping("/")
     public String index(){
-        return "home";
+        return "user/home";
     }
     @GetMapping("/datphong")
     public String datPhong(Model model, String keyword ) {
@@ -30,6 +31,17 @@ public class HomeController {
         model.addAttribute("room", roomService.getbyName());
         return "user/room";
     }
+
+    @GetMapping("/service")
+    public String list(Model model)
+    {
+        model.addAttribute("services", serviceService.GetAll());
+        return "user/service";
+    }
+
+
+
+
 
 
     @GetMapping("/encode/{pass}")
