@@ -43,7 +43,4 @@ public class BookRoomController {
         bookRoomService.add(newRental);
         return "user/confirm_bookroom";
     }
-
-
-
 }

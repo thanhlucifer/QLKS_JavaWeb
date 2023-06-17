@@ -4,41 +4,70 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-  <meta charset="UTF-8">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
-        rel="stylesheet"
-        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
-        crossorigin="anonymous">
+    <meta charset="utf-8">
+    <title>Hotel</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="home/img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="home/lib/animate/animate.min.css" rel="stylesheet">
+    <link href="home/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="home/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="home/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="home/css/style.css" rel="stylesheet">
     <link rel="icon" href="images/5-stars.png" />
 </head>
 <body>
-<nav class="navbar bg-dark" data-bs-theme="dark">
-  <div style="padding-left: 20px">
-        <span sec:authorize="hasAnyAuthority('ROLE_USER')">
-               <a class="navbar-brand" th:href="@{/home}">Home</a>
-            </span>
-    <span sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
-                <a class="navbar-brand"  th:href="@{/admin}">Admin</a>
-            </span>
-
-  </div>
-  <div class="navbar-brand ms-auto">
-            <span sec:authorize="isAuthenticated()">
-                <span sec:authentication="name"></span> |
-                <a sec:logout th:href="@{/logout}" class="text-white">Logout</a>
-            </span>
-    <span sec:authorize="!isAuthenticated()">
-                <a sec:authorize="isAnonymous()" th:href="@{/login}" class="text-white">Login</a>
-            </span>
-  </div>
-</nav>
-<br/>
+<!-- Header Start -->
+<div class="container-fluid bg-dark px-0">
+    <div class="row gx-0">
+        <div class="col-lg-3 bg-dark d-none d-lg-block">
+            <a href="index.html" class="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center justify-content-center">
+                <h1 class="m-0 text-primary text-uppercase">Hotel</h1>
+            </a>
+        </div>
+    </div>
+</div>
+<!-- Header End -->
 <div layout:fragment="content"  class="container body-content">
+
+
 </div>
-<div class="card-footer text-center">
-  <hr />
-  Quan Ly Khach San - @2023
-</div>
+<script src="js/jquery-3.1.1.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+<script src="js/custom.js"></script>
+<!-- Google Map -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap"></script>
+<!-- End Google Map -->
+<!-- JavaScript Libraries -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="home/lib/wow/wow.min.js"></script>
+<script src="home/lib/easing/easing.min.js"></script>
+<script src="home/lib/waypoints/waypoints.min.js"></script>
+<script src="home/lib/counterup/counterup.min.js"></script>
+<script src="home/lib/owlcarousel/owl.carousel.min.js"></script>
+<script src="home/lib/tempusdominus/js/moment.min.js"></script>
+<script src="home/lib/tempusdominus/js/moment-timezone.min.js"></script>
+<script src="home/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 </body>
 </html>
 

@@ -25,16 +25,10 @@
     </div>
 
     <ul class="list-unstyled components">
-      <li><a href="#"> <i class="fas fa-briefcase"></i> Quản lý phòng
-      </a> <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false"
-              class="dropdown-toggle"> <i class="fas fa-copy"></i> Quản lý dịch vụ
-      </a>
-        <ul class="collapse list-unstyled" id="pageSubmenu">
-          <li><a href="#">1</a></li>
-          <li><a href="#">2</a></li>
-          <li><a href="#">3</a></li>
-        </ul></li>
-
+      <li><a th:href="@{/admin/food_items}"> <i class="fas fa-hamburger"></i> Quản lý phòng
+      </a></li>
+      <li><a th:href="@{/admin/food_items}"> <i class="fas fa-hamburger"></i> Quản lý dịch vụ
+      </a></li>
       <li><a th:href="@{/admin/food_items}"> <i class="fas fa-hamburger"></i> Quản lý đồ ăn
       </a></li>
       <li><a th:href="@{/admin/employees}"> <i class="fas fa-users"></i> Quản lý nhân viên

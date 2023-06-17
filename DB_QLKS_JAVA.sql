@@ -22,11 +22,7 @@ values('1','Gà rán','ga_ran.jpg','500000'),
 ('4','gỏi gà măng cụt','goi_ga.jpg','200000'),
 ('5','Kem cuộn','kem_cuon.jpg','120000');
 
-insert into qlks.service(service_id,service_name,price,note) 
-values('1','Quầy bar','0','miễn phí'),
-('2','Dịch vụ Spa','2500000',''),
-('3','Fitness center','100000',''),
-('4','Sân golf và sân tennis','200000','');
+
 
 insert into qlks.section(section_id,section_name,section_manager_id)
 values  ('1','letan','1'),

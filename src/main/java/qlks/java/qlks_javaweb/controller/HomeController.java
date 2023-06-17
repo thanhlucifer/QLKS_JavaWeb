@@ -9,20 +9,23 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import qlks.java.qlks_javaweb.model.room;
-import qlks.java.qlks_javaweb.repository.RoomRepository;
 import qlks.java.qlks_javaweb.service.RoomService;
 
 import java.util.List;
 
+
 @Controller
-@RequestMapping("/user")
 public class HomeController {
     @Autowired
     private RoomService roomService;
 
 
-    @GetMapping("")
-    public String datPhong(Model model,String keyword ) {
+    @GetMapping("/")
+    public String index(){
+        return "home";
+    }
+    @GetMapping("/datphong")
+    public String datPhong(Model model, String keyword ) {
         List<room> listCourse = roomService.getbyName();
         model.addAttribute("room", roomService.getbyName());
         return "user/room";

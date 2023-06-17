@@ -46,19 +46,18 @@ public class SecurityConfig {
                 .formLogin(formLogin -> formLogin
                         .loginPage("/login")
                         .loginProcessingUrl("/login")
-                       // .defaultSuccessUrl("/home")
+                        //.defaultSuccessUrl("/home")
                         .failureUrl("/login?error")
                         .permitAll()
                         .successHandler((request, response, authentication) -> {
                             for (GrantedAuthority auth : authentication.getAuthorities()) {
                                 if (auth.getAuthority().equals("ROLE_USER")) {
-                                    response.sendRedirect("/user");
+                                    response.sendRedirect("/");
                                 } else if (auth.getAuthority().equals("ROLE_ADMIN")) {
                                     response.sendRedirect("/admin");
                                 }
                             }
                         }))
-
 
                 .logout(
                         logout -> logout

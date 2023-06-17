@@ -1,60 +1,160 @@
 <!DOCTYPE html>
-<html lang="en"
-      xmlns:th=”http://www.thymeleaf.org” xmlns="http://www.w3.org/1999/html">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-  <!-- slider stylesheet -->
-  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
-  <!-- bootstrap core css -->
-  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
-  <!-- fonts awesome style -->
-  <link href="css/font-awesome/css1/font-awesome.min.css" rel="stylesheet" />
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml"  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org">
 
-  <!-- Custom styles for this template -->
-  <link href="css/style.css" rel="stylesheet" />
-  <!-- responsive style -->
-  <link href="css/responsive.css" rel="stylesheet" />
+<head>
+  <meta charset="utf-8">
+  <title>Hotel</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="" name="keywords">
+  <meta content="" name="description">
+
+  <!-- Favicon -->
+  <link href="home/img/favicon.ico" rel="icon">
+
+  <!-- Google Web Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Icon Font Stylesheet -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- Libraries Stylesheet -->
+  <link href="home/lib/animate/animate.min.css" rel="stylesheet">
+  <link href="home/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="home/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+  <!-- Customized Bootstrap Stylesheet -->
+  <link href="home/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Template Stylesheet -->
+  <link href="home/css/style.css" rel="stylesheet">
 </head>
 <body>
+<!-- Spinner Start -->
+<div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+  <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+</div>
+<!-- Spinner End -->
+
+<!-- Header Start -->
+<div class="container-fluid bg-dark px-0">
+  <div class="row gx-0">
+    <div class="col-lg-3 bg-dark d-none d-lg-block">
+      <a href="index.html" class="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center justify-content-center">
+        <h1 class="m-0 text-primary text-uppercase">Hotel</h1>
+      </a>
+    </div>
+    <div class="col-lg-9">
+      <nav class="navbar navbar-expand-lg bg-dark navbar-dark p-3 p-lg-0">
+        <a href="index.html" class="navbar-brand d-block d-lg-none">
+          <h1 class="m-0 text-primary text-uppercase">Hotel</h1>
+        </a>
+        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+          <div class="navbar-nav mr-auto py-0">
+            <a href="index.html" class="nav-item nav-link active">Home</a>
+            <a href="service.html" class="nav-item nav-link">Services</a>
+            <a href="room.html" class="nav-item nav-link">Rooms</a>
+            <a href="booking.html" class="nav-item nav-link">Rooms</a>
+            <a href="contact.html" class="nav-item nav-link">Contact</a>
+          </div>
+        </div>
+        <div class="navbar-nav ml-auto py-0">
+                        <span sec:authorize="isAuthenticated()">
+                        <span sec:authentication="name"></span> |
+                        <a sec:logout th:href="@{/logout}" class="text-white">Logout</a></span>
+          <span sec:authorize="!isAuthenticated()">
+                        <a sec:authorize="isAnonymous()" th:href="@{/login}" class="text-white">Login</a></span>
+        </div>
+      </nav>
+    </div>
+  </div>
+</div>
+<!-- Header End -->
+
+<!-- Page Content  -->
+<div class="container" id="app"></div>
+<div layout:fragment="content_user"  class="body-content">
 
 
-<nav class="navbar bg-dark" data-bs-theme="dark">
-  <div layout:fragment="header">
-    <div class="d-flex justify-content-between align-items-center">
-      <div>
-        <a class="navbar-brand" href="/home">Home</a>
-        <a class="navbar-brand" href="/course/create">Add course</a>
+
+
+</div>
+<!-- Page Content  End-->
+
+
+
+<!-- Footer Start -->
+<div class="container-fluid bg-dark text-light footer wow fadeIn" data-wow-delay="0.1s">
+  <div class="container pb-5">
+    <div class="row g-5">
+      <div class="col-md-6 col-lg-3">
+        <h6 class="section-title text-start text-primary text-uppercase mb-4">Contact</h6>
+        <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Quận 9, TP.Thủ Đức, HCM</p>
+        <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+84 909 999 999</p>
+        <p class="mb-2"><i class="fa fa-envelope me-3"></i>doan@exampl.com</p>
+        <div class="d-flex pt-2">
+          <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
+          <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
+          <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a>
+          <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
+        </div>
       </div>
-      <div class="d-flex ml-auto">
-        <form th:action="@{/home}" method="get">
-          <input type="text" name="keyword" th:value="${keyword}"  placeholder="Search Name" size="50" >
-          <button type="submit" class="btn btn-info" >Search</button>
-
-        </form>
+      <div class="col-lg-5 col-md-12">
+        <div class="row gy-5 g-4">
+          <div class="col-md-6">
+            <h6 class="section-title text-start text-primary text-uppercase mb-4">Company</h6>
+            <a class="btn btn-link" href="">About Us</a>
+            <a class="btn btn-link" href="">Contact Us</a>
+            <a class="btn btn-link" href="">Privacy Policy</a>
+            <a class="btn btn-link" href="">Terms & Condition</a>
+            <a class="btn btn-link" href="">Support</a>
+          </div>
+          <div class="col-md-6">
+            <h6 class="section-title text-start text-primary text-uppercase mb-4">Services</h6>
+            <a class="btn btn-link" href="">Food & Restaurant</a>
+            <a class="btn btn-link" href="">Spa & Fitness</a>
+            <a class="btn btn-link" href="">Sports & Gaming</a>
+            <a class="btn btn-link" href="">Event & Party</a>
+            <a class="btn btn-link" href="">GYM & Yoga</a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</nav>
-<div class="container">
-  <div layout:fragment="content" class="container body-content">
-
-  </div>
-  <div class="card-footer">
-    <hr/>
-    Lập trình ứng dụng java - Huỳnh Nam- @2023
-  </div>
 </div>
+<!-- Footer End -->
 
 
+<!-- Back to Top -->
+<a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+<script src="js/jquery-3.1.1.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+<script src="js/custom.js"></script>
+<!-- Google Map -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap"></script>
+<!-- End Google Map -->
+<!-- JavaScript Libraries -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="home/lib/wow/wow.min.js"></script>
+<script src="home/lib/easing/easing.min.js"></script>
+<script src="home/lib/waypoints/waypoints.min.js"></script>
+<script src="home/lib/counterup/counterup.min.js"></script>
+<script src="home/lib/owlcarousel/owl.carousel.min.js"></script>
+<script src="home/lib/tempusdominus/js/moment.min.js"></script>
+<script src="home/lib/tempusdominus/js/moment-timezone.min.js"></script>
+<script src="home/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
-
-  <script src="js/jquery-3.1.1.min.js"></script>
-  <script src="js/bootstrap.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-  <script src="js/custom.js"></script>
-  <!-- Google Map -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap"></script>
-  <!-- End Google Map -->
+<!-- Template Javascript -->
+<script src="home/js/main.js"></script>
 </body>
 </html>
