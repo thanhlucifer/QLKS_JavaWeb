@@ -30,7 +30,8 @@ public class HomeController {
     }
 
     @GetMapping("/datphong")
-    public String datPhong(Model model,@RequestParam(defaultValue = "0") int pageNo,
+    public String datPhong(Model model,
+                           @RequestParam(defaultValue = "0") int pageNo,
                            @RequestParam(defaultValue = "5") int pageSize)
     {
 //        Page<room> pages ;
@@ -58,6 +59,18 @@ public class HomeController {
 //        model.addAttribute("room", roomService.getbyName());
 
         Page<room> rooms = roomService.list(pageNo, pageSize);
+        int totalPages = rooms.getTotalPages();
+        model.addAttribute("room", rooms);
+        model.addAttribute("totalPages", totalPages);
+        return "user/room";
+    }
+
+    @GetMapping("/search")
+    public String search(Model model, @RequestParam String key,
+                                 @RequestParam(defaultValue = "0") int pageNo,
+                                 @RequestParam(defaultValue = "5") int pageSize)
+    {
+        Page<room> rooms = roomService.search(key, pageNo, pageSize);
         int totalPages = rooms.getTotalPages();
         model.addAttribute("room", rooms);
         model.addAttribute("totalPages", totalPages);

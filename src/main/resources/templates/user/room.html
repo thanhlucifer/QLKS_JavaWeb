@@ -5,32 +5,77 @@
 <head>
     <meta charset="UTF-8">
     <title>Đặt phòng</title>
+    <link href="home/img/favicon.ico" rel="icon">
 
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="home/lib/animate/animate.min.css" rel="stylesheet">
+    <link href="home/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="home/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="home/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="home/css/style.css" rel="stylesheet">
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <script src="js/custom.js"></script>
+    <!-- Google Map -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap"></script>
+    <!-- End Google Map -->
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="home/lib/wow/wow.min.js"></script>
+    <script src="home/lib/easing/easing.min.js"></script>
+    <script src="home/lib/waypoints/waypoints.min.js"></script>
+    <script src="home/lib/counterup/counterup.min.js"></script>
+    <script src="home/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="home/lib/tempusdominus/js/moment.min.js"></script>
+    <script src="home/lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="home/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="home/js/main.js"></script>
 
 </head>
 <body>
 <div layout:fragment="content_user" class="body-content">
-    <div class="chamber-filter">
-        <h2>Giá</h2>
-        <div class="form-check">
-            <label class="form-check-label"> <a
-                    th:href="@{/user/datphong(p=1)}">
-                <input type="radio" class="form-check-input" name="price"
-                       th:attr="checked=${room1}"
-                       onclick="javascript: return false;">Dưới 170000
-            </a>
-            </label>
-        </div>
-        <div class="form-check">
-            <label class="form-check-label"> <a
-                    th:href="@{/user/datphong(p=2)}">
-                <input type="radio" class="form-check-input" name="price"
-                       th:attr="checked=${room2}"
-                       onclick="javascript: return false;">tren 170000
-            </a>
-            </label>
-        </div>
-    </div>
+<!--    <div class="chamber-filter">-->
+<!--        <h2>Giá</h2>-->
+<!--        <div class="form-check">-->
+<!--            <label class="form-check-label"> <a-->
+<!--                    th:href="@{/user/datphong(p=1)}">-->
+<!--                <input type="radio" class="form-check-input" name="price"-->
+<!--                       th:attr="checked=${room1}"-->
+<!--                       onclick="javascript: return false;">Dưới 170000-->
+<!--            </a>-->
+<!--            </label>-->
+<!--        </div>-->
+<!--        <div class="form-check">-->
+<!--            <label class="form-check-label"> <a-->
+<!--                    th:href="@{/user/datphong(p=2)}">-->
+<!--                <input type="radio" class="form-check-input" name="price"-->
+<!--                       th:attr="checked=${room2}"-->
+<!--                       onclick="javascript: return false;">tren 170000-->
+<!--            </a>-->
+<!--            </label>-->
+<!--        </div>-->
+<!--    </div>-->
+    <form class="form-inline d-flex" th:action="@{/user/search}" method="get">
+        <input class="form-control flex-grow-1" type="search" placeholder="tìm kiếm số phòng" aria-label="Search" name="key">
+        <button class="btn btn-outline-success flex-grow-1" type="submit">Search</button>
+    </form>
     <table class="table table-striped">
         <thead>
         <tr>
@@ -54,7 +99,7 @@
             <td th:text="${room.note}"></td>
             <td>
                 <a th:href="@{/user/bookroom}" class="btn btn-primary">Đặt phòng</a>
-                <!--                <a th:href="@{/products/delete/{id}(id=${product.id})}" custom:linkMethod="post" class="btn btn-danger">Delete</a>-->
+
             </td>
         </tr>
         </tbody>
@@ -82,8 +127,7 @@
 
 
 
-<!-- Template Javascript -->
-<script src="home/js/main.js"></script>
+
 
 </body>
 </html>

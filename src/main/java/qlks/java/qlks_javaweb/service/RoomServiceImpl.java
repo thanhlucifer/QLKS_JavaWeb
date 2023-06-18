@@ -28,6 +28,13 @@ public class RoomServiceImpl implements RoomService{
     }
 
     @Override
+    public Page<room> search(String key, int pageNo, int
+            pageSize) {
+        Pageable pageable = PageRequest.of(pageNo, pageSize);
+        return repo.searchProducts(key, pageable);
+    }
+
+    @Override
     public room getById(long id) {
         return repo.findById(id).get();
     }
