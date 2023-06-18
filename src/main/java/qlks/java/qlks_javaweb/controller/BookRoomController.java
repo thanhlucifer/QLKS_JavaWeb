@@ -26,10 +26,12 @@ public class BookRoomController {
 
     @Autowired
     public BookRoomService bookRoomService;
+    @Autowired
+    public RoomService roomService;
 
     @GetMapping("")
     public String bookRoom( Model model) {
-
+        model.addAttribute("room", roomService.GetAll());
         model.addAttribute("rental", new Rental());
         return "user/bookroom";
     }

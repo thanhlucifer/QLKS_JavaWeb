@@ -1,13 +1,11 @@
 package qlks.java.qlks_javaweb.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import qlks.java.qlks_javaweb.model.room;
 import qlks.java.qlks_javaweb.service.FoodItemService;
 import qlks.java.qlks_javaweb.service.RoomService;
@@ -32,9 +30,37 @@ public class HomeController {
     }
 
     @GetMapping("/datphong")
-    public String datPhong(Model model, String keyword ) {
-        List<room> listCourse = roomService.getbyName();
-        model.addAttribute("room", roomService.getbyName());
+    public String datPhong(Model model,@RequestParam(defaultValue = "0") int pageNo,
+                           @RequestParam(defaultValue = "5") int pageSize)
+    {
+//        Page<room> pages ;
+//        boolean checkPrice1 = false;
+//        boolean checkPrice2 = false;
+//        switch (price) {
+//            case 1:
+//                pages = roomService.searchChamberWithPrice1();
+//                checkPrice1 = true;
+//                break;
+//            case 2:
+//                pages = roomService.searchChamberWithPrice2();
+//                checkPrice2 = true;
+//                break;
+//
+//            default:
+//                throw new IllegalStateException("Unexpected value: " + price);
+//        }
+
+//        List<room> listCourse = roomService.getbyName();
+
+//        model.addAttribute("room1", checkPrice1);
+//        model.addAttribute("room2", checkPrice2);
+//        model.addAttribute("room", pages);
+//        model.addAttribute("room", roomService.getbyName());
+
+        Page<room> rooms = roomService.list(pageNo, pageSize);
+        int totalPages = rooms.getTotalPages();
+        model.addAttribute("room", rooms);
+        model.addAttribute("totalPages", totalPages);
         return "user/room";
     }
 
