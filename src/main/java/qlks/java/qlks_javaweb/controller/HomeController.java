@@ -65,7 +65,7 @@ public class HomeController {
                                 @RequestParam("sortField") String sortField,
                                 @RequestParam("sortDir") String sortDir,
                                 Model model) {
-        int pageSize = 2;
+        int pageSize = 4;
 
         Page<food_item> page = foodItemService.findPaginated(pageNo, pageSize, sortField, sortDir);
         List<food_item> listfood = page.getContent();
