@@ -51,27 +51,7 @@
 </head>
 <body>
 <div layout:fragment="content_user" class="body-content">
-<!--    <div class="chamber-filter">-->
-<!--        <h2>Giá</h2>-->
-<!--        <div class="form-check">-->
-<!--            <label class="form-check-label"> <a-->
-<!--                    th:href="@{/user/datphong(p=1)}">-->
-<!--                <input type="radio" class="form-check-input" name="price"-->
-<!--                       th:attr="checked=${room1}"-->
-<!--                       onclick="javascript: return false;">Dưới 170000-->
-<!--            </a>-->
-<!--            </label>-->
-<!--        </div>-->
-<!--        <div class="form-check">-->
-<!--            <label class="form-check-label"> <a-->
-<!--                    th:href="@{/user/datphong(p=2)}">-->
-<!--                <input type="radio" class="form-check-input" name="price"-->
-<!--                       th:attr="checked=${room2}"-->
-<!--                       onclick="javascript: return false;">tren 170000-->
-<!--            </a>-->
-<!--            </label>-->
-<!--        </div>-->
-<!--    </div>-->
+
     <form class="form-inline d-flex" th:action="@{/user/search}" method="get">
         <input class="form-control flex-grow-1" type="search" placeholder="tìm kiếm số phòng" aria-label="Search" name="key">
         <button class="btn btn-outline-success flex-grow-1" type="submit">Search</button>
@@ -104,24 +84,25 @@
         </tr>
         </tbody>
     </table>
-    <nav aria-label="Page navigation example" th:if="${totalPages > 1}">
-        <ul class="pagination">
-            <li class="page-item" th:class="${room.hasPrevious() ? '' : 'disabled'}">
-                <a class="page-link" th:href="@{/user/datphong?page=__${room.number-1}__}" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                </a>
-            </li>
-            <li class="page-item" th:each="page : ${#numbers.sequence(0, totalPages - 1)}"
-                th:class="${room.number == page ? 'active' : ''}">
-                <a class="page-link "th:href="@{/user/datphong?page=__${page}__}" th:text="${page + 1}"></a></li>
+<!--    <nav aria-label="Page navigation example" th:if="${totalPages > 1}">-->
+<!--        <ul class="pagination">-->
+<!--            <li class="page-item" th:class="${room.hasPrevious() ? '' : 'disabled'}">-->
+<!--                <a class="page-link" th:href="@{/user/datphong?page=__${room.number-1}__}" aria-label="Previous">-->
+<!--                    <span aria-hidden="true">&laquo;</span>-->
+<!--                </a>-->
+<!--            </li>-->
+<!--            <li class="page-item" th:each="page : ${#numbers.sequence(0, totalPages - 1)}"-->
+<!--                th:class="${room.number == page ? 'active' : ''}">-->
+<!--                <a class="page-link "th:href="@{/user/datphong?page=__${page}__}" th:text="${page + 1}"></a></li>-->
 
-            <li class="page-item" th:class="${room.hasNext() ? '' : 'disabled'}">
-                <a class="page-link " th:href="@{/user/datphong?page=__${room.number+1}__}" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
+<!--            <li class="page-item" th:class="${room.hasNext() ? '' : 'disabled'}">-->
+<!--                <a class="page-link " th:href="@{/user/datphong?page=__${room.number+1}__}" aria-label="Next">-->
+<!--                    <span aria-hidden="true">&raquo;</span>-->
+<!--                </a>-->
+<!--            </li>-->
+<!--        </ul>-->
+<!--    </nav>-->
+
 </div>
 <br>
 

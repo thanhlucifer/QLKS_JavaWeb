@@ -1,42 +1,86 @@
 <!DOCTYPE html>
 <html lang="en"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout_user"
-      xmlns:custom="http://www.w3.org/1999/xhtml">
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout_user"
+      xmlns:th="http://www.thymeleaf.org">
+
+
 <head>
     <meta charset="UTF-8">
     <title>Food</title>
+
 
 </head>
 <body>
 <div layout:fragment="content_user" class="body-content">
   <h2>Danh sách đồ ăn</h2>
 
-  <table class="table table-striped">
+  <table class="table table-striped table-responsive-md">
     <thead>
     <tr>
       <th scope="col">#</th>
       <th scope="col">Image</th>
       <th scope="col">Name</th>
-      <th scope="col">Price</th>
-      <th scope="col"></th>
+<!--      <th scope="col">Price</th>-->
+<!--      <th>-->
+<!--        <a th:href="@{'/user/page/' + ${currentPage} + '?sortField=foodId&sortDir=' + ${reverseSortDir}}">-->
+<!--          #</a>-->
+<!--      </th>-->
+<!--      <th>-->
+<!--        <a th:href="@{'/user/page/' + ${currentPage} + '?sortField=foodImage&sortDir=' + ${reverseSortDir}}">-->
+<!--          image</a>-->
+<!--      </th>-->
+<!--      <th>-->
+<!--        <a th:href="@{'/user/page/' + ${currentPage} + '?sortField=foodName&sortDir=' + ${reverseSortDir}}">-->
+<!--          Name</a>-->
+<!--      </th>-->
+      <th>
+        <a th:href="@{'/user/page/' + ${currentPage} + '?sortField=foodPrice&sortDir=' + ${reverseSortDir}}">
+          Price</a>
+      </th>
     </tr>
     </thead>
+
     <tbody>
     <tr th:each="food : ${food}" >
-      <th scope="row" th:text="${food.foodId}"></th>
+      <td th:text="${food.foodId}"></td>
 
       <td>
         <img height="120" width="150" th:src="@{/images_food/} + ${food.foodImage}"/>
       </td>
       <td th:text="${food.foodName}"></td>
       <td th:text="${food.foodPrice}"></td>
-
     </tr>
     </tbody>
   </table>
+
+  <div th:if = "${totalPages > 1}">
+    <div class = "row col-sm-10">
+      <div class = "col-sm-2">
+        Total Rows: [[${totalItems}]]
+      </div>
+      <div class = "col-sm-1">
+					<span th:each="i: ${#numbers.sequence(1, totalPages)}">
+						<a th:if="${currentPage != i}" th:href="@{'/user/page/' + ${i}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">[[${i}]]</a>
+						<span th:unless="${currentPage != i}">[[${i}]]</span>  &nbsp; &nbsp;
+					</span>
+      </div>
+      <div class = "col-sm-1">
+        <a th:if="${currentPage < totalPages}"
+           th:href="@{'/user/page/' + ${currentPage + 1}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Next</a>
+        <span th:unless="${currentPage < totalPages}">Next</span>
+      </div>
+
+      <div class="col-sm-1">
+        <a th:if="${currentPage < totalPages}"
+           th:href="@{'/user/page/' + ${totalPages}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Last</a>
+        <span th:unless="${currentPage < totalPages}">Last</span>
+      </div>
+    </div>
+  </div>
 </div>
 
-<!-- Bootstrap JS -->
+
 
 </body>
 </html>

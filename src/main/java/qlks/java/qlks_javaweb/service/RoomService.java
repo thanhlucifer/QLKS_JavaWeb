@@ -13,11 +13,11 @@ import java.util.List;
 
 public interface RoomService {
     public List<room> GetAll();
-    public Page<room> list( int pageNo, int pageSize);
+    public List<room> list( );
     public room getById(long id);
-    public Page<room> search(String key, int pageNo, int pageSize);
-//    public Page<room> searchChamberWithPrice1();
-//    public Page<room> searchChamberWithPrice2();
+    public List<room> search(String key);
+
+
 
 
 

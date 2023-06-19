@@ -52,7 +52,7 @@ public class SecurityConfig {
                         .successHandler((request, response, authentication) -> {
                             for (GrantedAuthority auth : authentication.getAuthorities()) {
                                 if (auth.getAuthority().equals("ROLE_USER")) {
-                                    response.sendRedirect("/user/datphong");
+                                    response.sendRedirect("/user/room");
                                 } else if (auth.getAuthority().equals("ROLE_ADMIN")) {
                                     response.sendRedirect("/admin");
                                 }

@@ -22,16 +22,13 @@ public class RoomServiceImpl implements RoomService{
     }
 
     @Override
-    public Page<room> list( int pageNo, int pageSize) {
-        Pageable pageable = PageRequest.of(pageNo, pageSize);
-        return repo.search(pageable);
+    public List<room> list( ) {
+        return repo.search();
     }
 
     @Override
-    public Page<room> search(String key, int pageNo, int
-            pageSize) {
-        Pageable pageable = PageRequest.of(pageNo, pageSize);
-        return repo.searchRooms(key, pageable);
+    public List<room> search(String key) {
+        return repo.searchRooms(key);
     }
 
     @Override
@@ -39,15 +36,7 @@ public class RoomServiceImpl implements RoomService{
         return repo.findById(id).get();
     }
 
-//    @Override
-//    public Page<room> searchChamberWithPrice1() {
-//        return repo.searchRoomWithPrice1();
-//    }
-//
-//    @Override
-//    public Page<room> searchChamberWithPrice2() {
-//        return repo.searchRoomWithPrice2();
-//    }
+
 
 
 }
