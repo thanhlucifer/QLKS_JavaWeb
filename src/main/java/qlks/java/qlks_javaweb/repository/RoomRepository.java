@@ -24,7 +24,7 @@ public interface RoomRepository extends JpaRepository<room,Long> {
 //    Page<room> searchRoomWithPrice2();
 
     @Query("SELECT p FROM room p WHERE p.roomNumber like %:key%")
-    Page<room> searchProducts(@Param("key") String key, Pageable pageable);
+    Page<room> searchRooms(@Param("key") String key, Pageable pageable);
 
 
 

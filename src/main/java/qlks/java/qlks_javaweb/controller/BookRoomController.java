@@ -29,16 +29,17 @@ public class BookRoomController {
     @Autowired
     public RoomService roomService;
 
-    @GetMapping("")
-    public String bookRoom( Model model) {
-        model.addAttribute("room", roomService.GetAll());
+    @GetMapping("{id}")
+    public String bookRoom(@PathVariable long id, Model model) {
+        model.addAttribute("room", roomService.getById(id));
         model.addAttribute("rental", new Rental());
         return "user/bookroom";
     }
 
     @PostMapping("")
-    public String bookRoom(@Valid Rental newRental, BindingResult result, Model model) {
+    public String bookRoom(@Valid Rental newRental,@Valid room room, BindingResult result, Model model) {
         if (result.hasErrors()) {
+            model.addAttribute("room",room);
             model.addAttribute("rental", newRental );
             return "user/bookroom";
         }

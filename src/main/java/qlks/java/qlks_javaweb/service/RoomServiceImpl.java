@@ -31,7 +31,7 @@ public class RoomServiceImpl implements RoomService{
     public Page<room> search(String key, int pageNo, int
             pageSize) {
         Pageable pageable = PageRequest.of(pageNo, pageSize);
-        return repo.searchProducts(key, pageable);
+        return repo.searchRooms(key, pageable);
     }
 
     @Override

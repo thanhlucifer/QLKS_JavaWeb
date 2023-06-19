@@ -12,32 +12,29 @@
   <form th:action="@{/user/bookroom}" th:object="${rental}" class="form" method="post">
       <h2>Phiếu đặt phòng</h2>
 
-<!--    <div class="form-group">-->
-<!--      <label for="rentalId">rentalId</label>-->
-<!--      <input type="text" th:field="*{rentalId}" class="form-control" id="rentalId" placeholder="rentalId">-->
-<!--    </div>-->
-<!--    <div class="form-group">-->
-<!--      <label for="roomNumber">Số phòng</label>-->
-<!--      <input type="text" th:field="*{roomNumber}" class="form-control" id="roomNumber" placeholder="roomNumber">-->
-<!--    </div>-->
       <br><br>
-      <div class="form-group">
-          <label for="roomNumber">Chọn phòng</label>
-          <select name="roomNumber" id="roomNumber">
-              <option value="101">101</option>
-              <option value="102">102</option>
-              <option value="103">103</option>
-              <option value="104">104</option>
-              <option value="105">105</option>
-              <option value="106">106</option>
-              <option value="107">107.</option>
-          </select>
-      </div>
-<!--      <div class="form-group">-->
-<!--          <label for="roomId">Họ tên</label>-->
-<!--          <input type="text" th:field="*{roomId}" class="form-control" id="roomId" placeholder="roomId">-->
 
-<!--      </div>-->
+
+      <div>
+          <tr th:each="room : ${room}"  >
+              <div class="form-group">
+                  <label for="roomNumber">Số phòng:</label>
+                  <select class="form-control" id="roomNumber" name="roomNumber"
+                          th:field="*{roomNumber}">
+                      <option th:each="room : ${room}"
+                              th:value="${room.roomNumber}"
+                              th:text="${room.roomNumber}">
+                      </option>
+                  </select>
+              </div>
+
+            <div>
+                <label>Giá phòng: </label>
+                <td th:text="${room.price}"> <th scope="col">VND/ngày</th></td>
+
+            </div>
+      </div>
+
     <div class="form-group">
       <label for="checkInDate">Check-in date</label>
       <input type="datetime-local" th:field="*{checkInDate}" class="form-control" id="checkInDate"

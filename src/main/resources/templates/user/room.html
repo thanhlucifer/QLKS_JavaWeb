@@ -98,7 +98,7 @@
             <td th:text="${room.price}"></td>
             <td th:text="${room.note}"></td>
             <td>
-                <a th:href="@{/user/bookroom}" class="btn btn-primary">Đặt phòng</a>
+                <a th:href="@{/user/bookroom/{id}(id=${room.roomId})}" class="btn btn-primary">Đặt phòng</a>
 
             </td>
         </tr>
