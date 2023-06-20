@@ -9,6 +9,9 @@
 <body>
 <div layout:fragment="content_body"  class="body-content">
   <h2>Danh sách các dịch vụ</h2>
+  <div >
+    <a th:href="@{/user/cart}" class="navbar-brand">Giỏ hàng(<span
+            th:text="${session.cartCount}"></span>)</a>
 
   <table class="table table-striped">
     <thead>
@@ -25,7 +28,13 @@
       <td th:text="${services.name}"></td>
       <td th:text="${services.price}"></td>
       <td th:text="${services.note}"></td>
+      <td>
 
+                    <form th:action="@{/user/cart/add/{id}(id=${services.id})}" method="post">
+                             <button type="submit" class="btn btn-secondary">Buy</button>
+                    </form>
+
+      </td>
     </tr>
     </tbody>
   </table>

@@ -20,7 +20,12 @@ values('1','Gà rán','ga_ran.jpg','500000'),
 ('2','lẩu dê','lau_de.jpg','1500000'),
 ('3','lẩu bò','lau_bo.jpg','500000'),
 ('4','gỏi gà măng cụt','goi_ga.jpg','200000'),
-('5','Kem cuộn','kem_cuon.jpg','120000');
+('5','Kem cuộn','kem_cuon.jpg','120000'),
+('6','Bánh mì','banhmi.png','12000'),
+('7','Bún','bun.png','20000'),
+('8','Gà nướng','ganuong.png','800000'),
+('9','nước','nuoc.png','10000');
+
 
 
 

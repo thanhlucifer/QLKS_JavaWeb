@@ -6,6 +6,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import qlks.java.qlks_javaweb.model.food_item;
 import qlks.java.qlks_javaweb.model.room;
 import qlks.java.qlks_javaweb.service.FoodItemService;
 import qlks.java.qlks_javaweb.service.RoomService;
@@ -15,6 +16,7 @@ import java.util.List;
 
 
 @Controller
+@RequestMapping("user")
 public class HomeController {
     @Autowired
     private RoomService roomService;
@@ -28,66 +30,59 @@ public class HomeController {
         return "user/home";
     }
 
-    @GetMapping("/rooms")
-    public String datPhong(Model model,
-                           @RequestParam(defaultValue = "0") int pageNo,
-                           @RequestParam(defaultValue = "5") int pageSize)
+    @GetMapping("/room")
+    public String datPhong(Model model)
     {
-//        Page<room> pages ;
-//        boolean checkPrice1 = false;
-//        boolean checkPrice2 = false;
-//        switch (price) {
-//            case 1:
-//                pages = roomService.searchChamberWithPrice1();
-//                checkPrice1 = true;
-//                break;
-//            case 2:
-//                pages = roomService.searchChamberWithPrice2();
-//                checkPrice2 = true;
-//                break;
-//
-//            default:
-//                throw new IllegalStateException("Unexpected value: " + price);
-//        }
-
-//        List<room> listCourse = roomService.getbyName();
-
-//        model.addAttribute("room1", checkPrice1);
-//        model.addAttribute("room2", checkPrice2);
-//        model.addAttribute("room", pages);
-//        model.addAttribute("room", roomService.getbyName());
-
-        Page<room> rooms = roomService.list(pageNo, pageSize);
-        int totalPages = rooms.getTotalPages();
+        List<room> rooms = roomService.list();
         model.addAttribute("room", rooms);
-        model.addAttribute("totalPages", totalPages);
         return "user/room";
     }
 
     @GetMapping("/search")
-    public String search(Model model, @RequestParam String key,
-                         @RequestParam(defaultValue = "0") int pageNo,
-                         @RequestParam(defaultValue = "5") int pageSize)
+    public String search(Model model, @RequestParam String key)
     {
-        Page<room> rooms = roomService.search(key, pageNo, pageSize);
-        int totalPages = rooms.getTotalPages();
+        List<room> rooms = roomService.search(key);
         model.addAttribute("room", rooms);
-        model.addAttribute("totalPages", totalPages);
         return "user/room";
     }
 
     @GetMapping("/service")
     public String list(Model model)
     {
-        model.addAttribute("services", serviceService.getAll());
+        model.addAttribute("services", serviceService.GetAll());
         return "user/service";
     }
     @GetMapping("/food")
     public String listfood(Model model)
     {
-        model.addAttribute("food", foodItemService.GetAll());
+//        model.addAttribute("food", foodItemService.GetAll());
+//        return "user/food_items";
+        return findPaginated(1, "foodId", "asc", model);
+    }
+
+    @GetMapping("/page/{pageNo}")
+    public String findPaginated(@PathVariable (value = "pageNo") int pageNo,
+                                @RequestParam("sortField") String sortField,
+                                @RequestParam("sortDir") String sortDir,
+                                Model model) {
+        int pageSize = 4;
+
+        Page<food_item> page = foodItemService.findPaginated(pageNo, pageSize, sortField, sortDir);
+        List<food_item> listfood = page.getContent();
+
+        model.addAttribute("currentPage", pageNo);
+        model.addAttribute("totalPages", page.getTotalPages());
+        model.addAttribute("totalItems", page.getTotalElements());
+
+        model.addAttribute("sortField", sortField);
+        model.addAttribute("sortDir", sortDir);
+        model.addAttribute("reverseSortDir", sortDir.equals("asc") ? "desc" : "asc");
+
+        model.addAttribute("food", listfood);
         return "user/food_items";
     }
+
+
 
 
 

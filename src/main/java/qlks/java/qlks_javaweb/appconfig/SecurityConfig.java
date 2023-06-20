@@ -37,8 +37,9 @@ public class SecurityConfig {
                 .authorizeRequests(authorize -> authorize
 
                         .requestMatchers("/home/**", "/login/**", "/logout/**").permitAll()
-    //cho co trang chu roi phan quyen cho user  .requestMatchers("/products/**").hasAnyAuthority("ROLE_SALES", "ROLE_USER")
+
                         .requestMatchers("/admin/**").hasAnyAuthority("ROLE_ADMIN")
+                        .requestMatchers("/user/**").hasAnyAuthority("ROLE_USER")
                         .requestMatchers("/register/**").permitAll()
                         .anyRequest().authenticated()
                 )
@@ -52,7 +53,7 @@ public class SecurityConfig {
                         .successHandler((request, response, authentication) -> {
                             for (GrantedAuthority auth : authentication.getAuthorities()) {
                                 if (auth.getAuthority().equals("ROLE_USER")) {
-                                    response.sendRedirect("/");
+                                    response.sendRedirect("/user/room");
                                 } else if (auth.getAuthority().equals("ROLE_ADMIN")) {
                                     response.sendRedirect("/admin");
                                 }

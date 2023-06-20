@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="layout_body"
+      layout:decorate="layout_user"
       xmlns:th="http://www.thymeleaf.org">
 
 
 <head>
-  <meta charset="UTF-8">
-  <title>Food</title>
+    <meta charset="UTF-8">
+    <title>Food</title>
 
 
 </head>
 <body>
-<div layout:fragment="content_body" class="body-content">
+<div layout:fragment="content_user" class="body-content">
   <h2>Danh sách đồ ăn</h2>
 
   <table class="table table-striped table-responsive-md">
@@ -21,19 +21,19 @@
       <th scope="col">#</th>
       <th scope="col">Image</th>
       <th scope="col">Name</th>
-      <!--      <th scope="col">Price</th>-->
-      <!--      <th>-->
-      <!--        <a th:href="@{'/user/page/' + ${currentPage} + '?sortField=foodId&sortDir=' + ${reverseSortDir}}">-->
-      <!--          #</a>-->
-      <!--      </th>-->
-      <!--      <th>-->
-      <!--        <a th:href="@{'/user/page/' + ${currentPage} + '?sortField=foodImage&sortDir=' + ${reverseSortDir}}">-->
-      <!--          image</a>-->
-      <!--      </th>-->
-      <!--      <th>-->
-      <!--        <a th:href="@{'/user/page/' + ${currentPage} + '?sortField=foodName&sortDir=' + ${reverseSortDir}}">-->
-      <!--          Name</a>-->
-      <!--      </th>-->
+<!--      <th scope="col">Price</th>-->
+<!--      <th>-->
+<!--        <a th:href="@{'/user/page/' + ${currentPage} + '?sortField=foodId&sortDir=' + ${reverseSortDir}}">-->
+<!--          #</a>-->
+<!--      </th>-->
+<!--      <th>-->
+<!--        <a th:href="@{'/user/page/' + ${currentPage} + '?sortField=foodImage&sortDir=' + ${reverseSortDir}}">-->
+<!--          image</a>-->
+<!--      </th>-->
+<!--      <th>-->
+<!--        <a th:href="@{'/user/page/' + ${currentPage} + '?sortField=foodName&sortDir=' + ${reverseSortDir}}">-->
+<!--          Name</a>-->
+<!--      </th>-->
       <th>
         <a th:href="@{'/user/page/' + ${currentPage} + '?sortField=foodPrice&sortDir=' + ${reverseSortDir}}">
           Price</a>
@@ -54,6 +54,36 @@
     </tbody>
   </table>
 
+  <div th:if = "${totalPages > 1}">
+    <div class = "row col-sm-10">
+      <div class = "col-sm-2">
+        Total Rows: [[${totalItems}]]
+
+      </div>
+      <div class = "col-sm-1">
+        <a th:if="${currentPage < totalPages}"
+           th:href="@{'/user/page/' + ${currentPage + - 1}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}"><</a>
+        <span th:unless="${currentPage < totalPages}"><</span>
+      </div>
+      <div class = "col-sm-1">
+					<span th:each="i: ${#numbers.sequence(1, totalPages)}">
+						<a th:if="${currentPage != i}" th:href="@{'/user/page/' + ${i}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">[[${i}]]</a>
+						<span th:unless="${currentPage != i}">[[${i}]]</span>  &nbsp; &nbsp;
+					</span>
+      </div>
+      <div class = "col-sm-1">
+        <a th:if="${currentPage < totalPages}"
+           th:href="@{'/user/page/' + ${currentPage + 1}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">></a>
+        <span th:unless="${currentPage < totalPages}">></span>
+      </div>
+
+      <div class="col-sm-1">
+        <a th:if="${currentPage < totalPages}"
+           th:href="@{'/user/page/' + ${totalPages}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">>></a>
+        <span th:unless="${currentPage < totalPages}">>></span>
+      </div>
+    </div>
+  </div>
 </div>
 
 

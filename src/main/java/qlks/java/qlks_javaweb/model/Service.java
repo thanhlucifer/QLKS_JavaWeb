@@ -23,7 +23,7 @@ public class Service  {
     private String name;
 
     @Column(name = "price")
-    private String price;
+    private int price;
 
     @Column(name = "note")
     private String note;
