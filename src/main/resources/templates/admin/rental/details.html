@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout_admin"
+      xmlns:custom="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div layout:fragment="content_admin" class="container body-content">
+    <h2>Rental Details</h2>
+    <table class="table">
+        <tr>
+            <th>RentalId</th>
+            <td th:text="${rental.rentalId}"></td>
+        </tr>
+        <tr>
+            <th>CheckInDate</th>
+            <td th:text="${rental.checkInDate}"></td>
+        </tr>
+        <tr>
+            <th>CheckOutDate</th>
+            <td th:text="${rental.checkOutDate}"></td>
+        </tr>
+        <tr>
+            <th>Guest</th>
+            <td th:text="${rental.guestName}"></td>
+        </tr>
+        <tr>
+            <th>CCCD</th>
+            <td th:text="${rental.cccd}"></td>
+        </tr>
+        <tr>
+            <th>Email</th>
+            <td th:text="${rental.email}"></td>
+        </tr>
+        <tr>
+            <th>Room Number</th>
+            <td th:text="${rental.roomNumber}"></td>
+        </tr>
+    </table>
+
+
+
+    <a th:href="@{/admin/rental}" class="btn btn-secondary">Back to List</a>
+</div>
+</body>
+</html>

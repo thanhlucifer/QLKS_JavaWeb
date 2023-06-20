@@ -15,7 +15,16 @@ import java.util.List;
 public interface RoomRepository extends JpaRepository<room,Long> {
 
     @Query(value = "SELECT c FROM room c where c.isEmpty='yes'")
-    List<room> search();
+    Page<room> search(Pageable pageable);
+
+//    @Query("SELECT d FROM room d where d.price<180000 and d.isEmpty ='yes'")
+//    Page<room> searchRoomWithPrice1();
+//
+//    @Query("SELECT e FROM room e where e.price>180000 and e.isEmpty ='yes'")
+//    Page<room> searchRoomWithPrice2();
+
+    @Query("SELECT p FROM room p WHERE p.roomNumber like %:key%")
+    Page<room> searchRooms(@Param("key") String key, Pageable pageable);
 
 
 

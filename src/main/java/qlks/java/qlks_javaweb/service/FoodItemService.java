@@ -44,6 +44,8 @@ public class FoodItemService {
             find.setFoodPrice(editfooditem.getFoodPrice());
         }
     }
+
+
     public void remove(long foodId) {
         foodItemRepository.deleteById(foodId);
     }

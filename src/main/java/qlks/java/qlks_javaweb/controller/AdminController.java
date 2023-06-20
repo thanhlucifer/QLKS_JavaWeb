@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import qlks.java.qlks_javaweb.model.User;
 import qlks.java.qlks_javaweb.service.RoleService;
+import qlks.java.qlks_javaweb.service.RoomService;
 import qlks.java.qlks_javaweb.service.UserService;
 
 import java.util.List;
@@ -18,7 +19,6 @@ public class AdminController {
     private final UserService userService;
     private final RoleService roleService;
 
-    @Autowired
     public AdminController(UserService userService, RoleService roleService) {
         this.userService = userService;
         this.roleService = roleService;
@@ -80,4 +80,6 @@ public class AdminController {
     public String showad(){
         return "admin/adminprofile";// test admin
     }
+
+
 }

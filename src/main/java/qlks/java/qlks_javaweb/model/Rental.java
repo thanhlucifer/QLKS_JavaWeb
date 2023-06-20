@@ -30,12 +30,12 @@ public class Rental {
     private String discount;
 
     @NotNull(message = "Không được trống")
-    @FutureOrPresent(message = "Phải lớn hoặc bằng ngày hiện tại")
+    //@FutureOrPresent(message = "Phải lớn hoặc bằng ngày hiện tại")
     @Column(name = "check_in_date")
     private LocalDateTime checkInDate;
 
     @NotNull(message = "Không được trống")
-    @FutureOrPresent(message = "Phải lớn hoặc bằng ngày hiện tại")
+    //@FutureOrPresent(message = "Phải lớn hoặc bằng ngày hiện tại")
     @Column(name = "check_out_date")
     private LocalDateTime checkOutDate;
 

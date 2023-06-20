@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout_admin">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div layout:fragment="content_admin" class="container body-content">
+    <h1>Create Room</h1>
+    <form  th:action="@{~/admin/room/save}" method="post" enctype="multipart/form-data" th:object="${room}">
+        <div>
+            <label>Room Number:</label>
+            <input type="text" th:field="*{roomNumber}" />
+        </div>
+        <div>
+            <label>Room Type:</label>
+            <input type="text" th:field="*{roomType}" />
+        </div>
+        <div>
+            <label for="imageProduct">Image:</label>
+            <input type="file" id="imageProduct" name="imageProduct" required />
+        </div>
+        <div>
+            <label>VIP:</label>
+            <input type="text" th:field="*{vip}" />
+        </div>
+        <div>
+            <label>Price:</label>
+            <input type="text" th:field="*{price}" />
+        </div>
+        <div>
+            <label>Note:</label>
+            <input type="text" th:field="*{note}" />
+        </div>
+        <div>
+            <label>Is Empty:</label>
+            <input type="text" th:field="*{isEmpty}" />
+        </div>
+        <button type="submit">Create</button>
+    </form>
+
+
+</div>
+</body>
+</html>

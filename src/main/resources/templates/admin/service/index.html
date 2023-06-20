@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout_admin"
+      xmlns:custom="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Service</title>
+</head>
+<body>
+<div layout:fragment="content_admin" class="container body-content">
+    <h1>List Service</h1>
+    <a th:href="@{/admin/service/create}" class="btn btn-primary btn-sm mb-3"> Add Service </a>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Service name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Note</th>
+            <th scope="col"> Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="service : ${listService}">
+            <td th:text="${service.id}"></td>
+            <td th:text="${service.name}"></td>
+            <td th:text="${service.price}"></td>
+            <td th:text="${service.note}"></td>
+        <td>
+            <a th:href="@{/admin/service/delete/{id}(id=${service.id})}" custom:linkMethod="post" class="btn btn-danger">Delete</a>
+        </td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+</body>
+</html>

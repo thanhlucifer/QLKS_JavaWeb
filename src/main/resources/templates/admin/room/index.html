@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout_admin"
+      xmlns:custom="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>ListRoom</title>
+</head>
+<body>
+<div layout:fragment="content_admin" class="container body-content">
+    <a th:href="@{/admin/room/create}" class="btn btn-primary btn-sm mb-3"> Add  </a>
+    <h1>List Room</h1>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">Room Number</th>
+            <th scope="col">Image</th>
+            <th scope="col">Room Type</th>
+            <th scope="col">Price</th>
+            <th scope="col">VIP</th>
+
+            <th scope="col">Note</th>
+            <th scope="col">Is Empty</th>
+            <th scope="col"> Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="room : ${listRoom}">
+            <th scope="row" th:text="${room.roomNumber}"></th>
+            <td>
+                <img height="120" width="150" th:src="@{/images/room/} + ${room.image}" />
+            </td>
+            <td th:text="${room.roomType}"></td>
+            <td th:text="${room.price}"></td>
+            <td th:text="${room.vip}"></td>
+
+            <td th:text="${room.note}"></td>
+            <td th:text="${room.isEmpty}"></td>
+            <td>
+                <a th:href="@{/admin/room/delete/{id}(id=${room.roomId})}" custom:linkMethod="post" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div th:if = "${totalPages > 1}">
+        <div class = "row col-sm-10">
+            <div class = "col-sm-2">
+                Total Rows: [[${totalItems}]]
+            </div>
+            <div class = "col-sm-2">
+					<span th:each="i: ${#numbers.sequence(1, totalPages)}">
+						<a th:if="${currentPage != i}" th:href="@{'/page/' + ${i}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">[[${i}]]</a>
+						<span th:unless="${currentPage != i}">[[${i}]]</span>  &nbsp; &nbsp;
+					</span>
+            </div>
+            <div class = "col-sm-1">
+                <a th:if="${currentPage < totalPages}" th:href="@{'/page/' + ${currentPage + 1}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Next</a>
+                <span th:unless="${currentPage < totalPages}">Next</span>
+            </div>
+
+            <div class="col-sm-1">
+                <a th:if="${currentPage < totalPages}" th:href="@{'/page/' + ${totalPages}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Last</a>
+                <span th:unless="${currentPage < totalPages}">Last</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

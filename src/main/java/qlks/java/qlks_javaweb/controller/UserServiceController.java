@@ -5,7 +5,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import qlks.java.qlks_javaweb.service.FoodItemService;
 import qlks.java.qlks_javaweb.service.ServiceService;
 
 @Controller
@@ -17,7 +16,7 @@ public class UserServiceController {
     @GetMapping("")
     public String list(Model model)
     {
-        model.addAttribute("services", serviceService.GetAll());
+        model.addAttribute("services", serviceService.getAll());
         return "user/service";
     }
 }

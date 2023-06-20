@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout_admin"
+      xmlns:custom="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div layout:fragment="content_admin" class="container body-content">
+    <h1>List Rental</h1>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">Ma phieu</th>
+            <th scope="col">check_in_date</th>
+            <th scope="col">check_out_date</th>
+            <th scope="col">Guest Name</th>
+            <th scope="col"> Room Number</th>
+            <th scope="col"> Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="rental : ${listRental}">
+            <td th:text="${rental.rentalId}"></td>
+            <td th:text="${rental.checkInDate}"></td>
+            <td th:text="${rental.checkOutDate}"></td>
+            <td th:text="${rental.guestName}"></td>
+            <td th:text="${rental.roomNumber}"></td>
+            <td>
+                <a th:href="@{/rentals/{rentalId}(rentalId=${rental.rentalId})}" custom:linkMethod="post" class="btn btn-danger">Details</a>
+                <a th:href="@{/admin/rental/delete/{id}(id=${rental.rentalId})}" custom:linkMethod="post" class="btn btn-danger">Delete</a>
+
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+</body>
+</html>

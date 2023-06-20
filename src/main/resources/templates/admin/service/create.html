@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout_admin">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Service</title>
+</head>
+<body>
+<div layout:fragment="content_admin" class="container body-content">
+    <form  th:action="@{/admin/service/save}" th:object="${service}" method="POST">
+        <input type="text" th:field="*{name}" placeholder="Service Name" class="form-control mb-4 col-4">
+
+        <input type="text" th:field="*{price}" placeholder="Price" class="form-control mb-4 col-4">
+
+        <input type="text" th:field="*{note}" placeholder="Note" class="form-control mb-4 col-4">
+
+        <button type="submit" class="btn btn-info col-2"> Save </button>
+    </form>
+
+</div>
+</body>
+</html>
