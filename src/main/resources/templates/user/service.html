@@ -9,10 +9,9 @@
 <body>
 <div layout:fragment="content_user" class="container body-content">
   <h2>Danh sách các dịch vụ</h2>
-  <td>
-    <a th:href="@{/user/cart}" class="btn btn-primary">Giỏ hàng</a>
-
-  </td>
+  <div >
+    <a th:href="@{/user/cart}" class="navbar-brand">Giỏ hàng(<span
+            th:text="${session.cartCount}"></span>)</a>
 
   <table class="table table-striped">
     <thead>

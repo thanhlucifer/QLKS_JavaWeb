@@ -25,7 +25,7 @@ public class CartController {
     @Autowired
     private CartService cartService;
     @GetMapping("")
-    public String getCartItems(Model model) {
+    public String getCartItems(Model model, HttpSession session) {
         List<CartItem> cartItems = cartService.getCartItems();
         model.addAttribute("cartItems", cartItems);
 // Calculate the total price
@@ -33,8 +33,9 @@ public class CartController {
                 .mapToLong(cartItem -> (cartItem.getPrice() * cartItem.getQuantity()))
                 .sum();
         model.addAttribute("totalPrice", totalPrice);
-// Calculate cart count
-        model.addAttribute("cartCount", cartItems.size());
+// Calculate cart count  || Sử dụng session để lưu trữ số mục giỏ hàng
+        session.setAttribute("cartCount", cartItems.size());
+//        model.addAttribute("cartCount", cartItems.size());
         return "user/index";
     }
 
