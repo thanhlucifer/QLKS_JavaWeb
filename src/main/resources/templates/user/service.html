@@ -1,45 +1,46 @@
 <!DOCTYPE html>
 <html lang="en"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout_body">
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout_user">
 <head>
-    <meta charset="UTF-8">
-    <title>Service</title>
+  <meta charset="UTF-8">
+  <title>Service</title>
 
 </head>
 <body>
-<div layout:fragment="content_body"  class="body-content">
+<div layout:fragment="content_user" class="container body-content">
   <h2>Danh sách các dịch vụ</h2>
   <div >
     <a th:href="@{/user/cart}" class="navbar-brand">Giỏ hàng(<span
             th:text="${session.cartCount}"></span>)</a>
 
-  <table class="table table-striped">
-    <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Dịch vụ</th>
-      <th scope="col">Giá</th>
-      <th scope="col">Note</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="services : ${services}" >
-      <th scope="row" th:text="${services.id}"></th>
-      <td th:text="${services.name}"></td>
-      <td th:text="${services.price}"></td>
-      <td th:text="${services.note}"></td>
-      <td>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Dịch vụ</th>
+        <th scope="col">Giá</th>
+        <th scope="col">Note</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="services : ${services}" >
+        <th scope="row" th:text="${services.id}"></th>
+        <td th:text="${services.name}"></td>
+        <td th:text="${services.price}"></td>
+        <td th:text="${services.note}"></td>
+        <td>
 
-                    <form th:action="@{/user/cart/add/{id}(id=${services.id})}" method="post">
-                             <button type="submit" class="btn btn-secondary">Buy</button>
-                    </form>
+          <form th:action="@{/user/cart/add/{id}(id=${services.id})}" method="post">
+            <button type="submit" class="btn btn-secondary">Buy</button>
+          </form>
 
-      </td>
-    </tr>
-    </tbody>
-  </table>
-
-
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
+
+
 </body>
 </html>

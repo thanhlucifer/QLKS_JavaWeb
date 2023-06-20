@@ -21,4 +21,11 @@ public class ServiceService {
     public qlks.java.qlks_javaweb.model.Service get(long id) {
         return serviceRepository.findById(id).get();
     }
+    public void save(qlks.java.qlks_javaweb.model.Service service) {
+        this.serviceRepository.save(service);
+    }
+    public void remove(long id) {
+        this.serviceRepository.deleteById(id);
+    }
+
 }

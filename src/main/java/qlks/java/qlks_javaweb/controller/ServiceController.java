@@ -18,7 +18,7 @@ public class ServiceController {
 
     @GetMapping("/admin/service")
     public String showService(Model model){
-        model.addAttribute("listService",serviceService.getAll());
+        model.addAttribute("listService",serviceService.GetAll());
         return "admin/service/index";
     }
 
